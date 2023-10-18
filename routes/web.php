@@ -5,7 +5,7 @@ use App\Events\Message;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ChatsHomeController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ChatsController;
@@ -74,9 +74,9 @@ Route::get('/personal-chat/{id}', [ChatsController::class, 'personalChat'])->nam
 Route::get('/chat/messages', [ChatsController::class, 'fetchMessages'])->name('chat.fetchMessages');
 Route::post('/chat/messages', [ChatsController::class, 'sendMessage'])->name('chat.sendMessages');
 
-Route::get('/home', [HomeController::class, 'index'])->name('home');
-Route::get('/message/{id}', [HomeController::class, 'getMessage'])->name('getMessage');
-Route::post('message', [HomeController::class, 'sendMessage'])->name('sendMessage');
+Route::get('/home', [ChatsHomeController::class, 'index'])->name('home');
+Route::get('/message/{id}', [ChatsHomeController::class, 'getMessage'])->name('getMessage');
+Route::post('message', [ChatsHomeController::class, 'sendMessage'])->name('sendMessage');
 
 
 Route::group(['middleware' => 'auth'], function () {
