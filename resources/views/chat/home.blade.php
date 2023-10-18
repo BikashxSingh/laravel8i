@@ -9,7 +9,7 @@
                         @foreach ($users as $user)
                             <li class="user" id="{{ $user->id }}">
                                 {{-- <span class="pending">1</span> --}}
-                                @if($user->unread)
+                                @if ($user->unread)
                                     <span class="pending">{{ $user->unread }}</span>
                                 @endif
 
@@ -30,8 +30,12 @@
             </div>
 
             <div class="col-sm-8" id="messages">
-                
+
             </div>
         </div>
     </div>
 @endsection
+@push('styles')
+@endpush
+@push('scripts')
+@endpush

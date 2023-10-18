@@ -7,7 +7,7 @@
         <header>
             <h1>Chat Application</h1>
             <label for="name" class="text text-danger">{{ Auth::user()->name }} @
-                {{ Auth::user()->username ?? Auth::user()->email ?? '' }}</label>
+                {{ Auth::user()->username ?? (Auth::user()->email ?? '') }}</label>
         </header>
         <div class="container">
             @foreach ($users as $user)
@@ -24,3 +24,8 @@
         </div>
     </div>
 @endsection
+
+@push('styles')
+@endpush
+@push('scripts')
+@endpush

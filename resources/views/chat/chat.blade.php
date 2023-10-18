@@ -43,7 +43,7 @@
 
         </div>
 
-        <form action="" id="message_form">
+        <form action="post" id="message_form">
             <input type="text" name="message" id="message_input" placeholder="Enter message">
             <button type="submit" id="message_send">Send</button>
             {{-- onclick="myFunction()" --}}
@@ -109,4 +109,9 @@
         // . in message is required casue we are returning 'message' in Message Event and without . returning wont work cause we
         // have to add app/event/message
     </script>
+@endpush
+
+@push('styles')
+@endpush
+@push('scripts')
 @endpush

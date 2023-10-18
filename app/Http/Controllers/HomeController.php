@@ -38,13 +38,15 @@ class HomeController extends Controller
         group by users.id, users.name, users.avatar, users.email");
 
         // $users = Message::where()
-        return view('home', ['users' => $users]);
+        return view('chat.home', ['users' => $users]);
     }
 
     public function getMessage($user_id)
     {
         // return $user_id;
         $my_id = Auth::id();
+        $user = User::find($user_id);
+
 
         // Make read all unread message
         Message::where(['from' => $user_id, 'to' => $my_id])->update(['is_read' => 1]);
@@ -62,7 +64,10 @@ class HomeController extends Controller
         })->get();
 
         // dd($messages);  
-        return view('messages.index', ['messages' => $messages]);
+        return view('chat.messages.index', [
+            'messages' => $messages,
+            'user' => $user,
+        ]);
     }
 
     public function sendMessage(Request $request)
