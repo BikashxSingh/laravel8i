@@ -147,7 +147,6 @@ class ChatFirstExampleController extends Controller
 
     public function sendMessage(Request $request)
     {
-        dd($request->all());
         $message = [
             "to" => $request->userid,
             "from" => Auth::user()->id,

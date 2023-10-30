@@ -58,7 +58,7 @@
         <div id="messages">
 
         </div>
-        <form id="message_form">
+        <form action="post" id="message_form">
             <input type="hidden" name="userid" value="{{ $user->id }}">
             <input type="text" name="message" id="message_input" placeholder="Enter message">
             <button type="submit" id="message_send">Send</button>
@@ -76,8 +76,6 @@
 @push('styles')
 @endpush
 @push('scripts')
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
-        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
     <script>
         // const message_el = document.getElementById("messages");
         // // const username_input = document.getElementById("username");
