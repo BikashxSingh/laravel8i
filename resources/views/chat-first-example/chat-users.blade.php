@@ -14,7 +14,7 @@
                 <ul>
                     <li class="text-primary">
                         <h5>
-                            <a href="{{ url('/personal-chat', $user->id) }}">
+                            <a href="{{ url('chat-first-example/personal-chat', $user->id) }}">
                                 {{ $user->name }} @ {{ $user->username ?? ($user->email ?? '') }}
                         </h5>
                         </a>

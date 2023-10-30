@@ -35,14 +35,14 @@
 
                 <div class="row">
                     <div class="col-2">
-                        <a href="{{ url('/chat-users') }}" class="container text text-danger" class="">
+                        <a href="{{ url('chat-first-example/chat-users') }}" class="container text text-danger" class="">
                             <button class="btn btn-success">
                                 Chat Users
                             </button>
                         </a>
                     </div>
                     <div class="col-2">
-                        <a href="{{ url('/chat') }}" class="container text text-danger" class="">
+                        <a href="{{ url('chat-first-example/chat') }}" class="container text text-danger" class="">
                             <button class="btn btn-success">
                                 Public Chat
                             </button>
@@ -106,7 +106,7 @@
 
         //     const options = {
         //         method: 'post',
-        //         url: "{{ route('chat.sendMessages', $user->id) }}",
+        //         url: "{{ route('chat-first-example.sendMessages', $user->id) }}",
         //         data: {
         //             // username: $username_input.value,
         //             message: message_input.value
@@ -160,11 +160,11 @@
             // });
 
             console.log("{{ $user->id }}");
-            // var url = "{{ route('chat.sendMessages', ':id') }}";
+            // var url = "{{ route('chat-first-example.sendMessages', ':id') }}";
             // url = url.replace(':id', user_id);
             const options = {
                 method: 'post',
-                url: "{{ route('chat.sendMessages') }}",
+                url: "{{ route('chat-first-example.sendMessages') }}",
                 data: {
                     data,
                     // username: $username_input.value,

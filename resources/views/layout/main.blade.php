@@ -7,7 +7,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}" />
 
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>TEST</title>
+    <title>{{ config('app.name', 'Laravel') }}</title>
         <!-- Bootstrap 3.3.4 -->
         <link rel="stylesheet" href="{{ asset('bootstrap/css/bootstrap.min.css') }}">
         <!-- Font Awesome -->
@@ -69,7 +69,10 @@
     
 
      <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-     
+     @stack('style')
+
+     @stack('styles')
+
 </head>
 
 <body>
@@ -95,6 +98,7 @@
         <script src="{{ asset('js/app.js') }}" defer></script>
         
         @stack('script')
+        @stack('scripts')
         
 
 

@@ -5,10 +5,10 @@ use App\Events\Message;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\ChatsHomeController;
+use App\Http\Controllers\ChatSecondExampleController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\UserController;
-use App\Http\Controllers\ChatsController;
+use App\Http\Controllers\ChatFirstExampleController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\LogoutController;
 use App\Http\Controllers\ProductController;
@@ -54,30 +54,29 @@ Route::get('/login/facebook/redirect', [LoginController::class, 'loginFacebookRe
 // Route::get('/login/{provider}', [LoginController::class, 'loginProvider'])->name('login.provider');
 // Route::get('/login/{provider}/redirect', [LoginController::class, 'loginProviderRedirect']);
 
-Route::get('/chat', [ChatsController::class, 'chat'])->name('chat.public');
-// Route::post('/chat/send-message', function (Request $request) {
-//     event(
-//         new Message(
-//             $request->input('username'),
-//             $request->input('message')
-//         )
-//     );
-//     return ["success" => true];
-// });
-Route::post('/chat/send-message', [ChatsController::class, 'chatSendMessage'])->name('chat.public.sendMessages');
+Route::group(['prefix' => 'chat-first-example'], function () {
+    Route::get('/chat', [ChatFirstExampleController::class, 'chat'])->name('chat-first-example.public');
+    // Route::post('/chat/send-message', function (Request $request) {
+    //     event(
+    //         new Message(
+    //             $request->input('username'),
+    //             $request->input('message')
+    //         )
+    //     );
+    //     return ["success" => true];
+    // });
+    Route::post('/chat/send-message', [ChatFirstExampleController::class, 'chatSendMessage'])->name('chat-first-example.public.sendMessages');
+    Route::get('/chat-users', [ChatFirstExampleController::class, 'chatUsers'])->name('chat-first-example.users');
+    Route::get('/personal-chat/{id}', [ChatFirstExampleController::class, 'personalChat'])->name('chat-first-example.personal');
+    Route::get('/chat/messages', [ChatFirstExampleController::class, 'fetchMessages'])->name('chat-first-example.fetchMessages');
+    Route::post('/chat/messages', [ChatFirstExampleController::class, 'sendMessage'])->name('chat-first-example.sendMessages');
+});
 
-
-Route::get('/chat-users', [ChatsController::class, 'chatUsers'])->name('chat.users');
-
-Route::get('/personal-chat/{id}', [ChatsController::class, 'personalChat'])->name('chat.personal');
-
-Route::get('/chat/messages', [ChatsController::class, 'fetchMessages'])->name('chat.fetchMessages');
-Route::post('/chat/messages', [ChatsController::class, 'sendMessage'])->name('chat.sendMessages');
-
-Route::get('/home', [ChatsHomeController::class, 'index'])->name('home');
-Route::get('/message/{id}', [ChatsHomeController::class, 'getMessage'])->name('getMessage');
-Route::post('message', [ChatsHomeController::class, 'sendMessage'])->name('sendMessage');
-
+Route::group(['prefix' => 'chat-second-example', 'as' => 'chat-second-example.'], function () {
+    Route::get('/home', [ChatSecondExampleController::class, 'index'])->name('home');
+    Route::get('/message/{id}', [ChatSecondExampleController::class, 'getMessage'])->name('getMessage');
+    Route::post('message', [ChatSecondExampleController::class, 'sendMessage'])->name('sendMessage');
+});
 
 Route::group(['middleware' => 'auth'], function () {
     Route::resource('users', UserController::class);

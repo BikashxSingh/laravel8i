@@ -5,7 +5,7 @@
               <!-- Sidebar user panel -->
               <div class="user-panel">
                   <div class="pull-left image">
-                      <img src={{ asset("dist/img/user2-160x160.jpg") }} class="img-circle" alt="User Image">
+                      <img src={{ asset('dist/img/user2-160x160.jpg') }} class="img-circle" alt="User Image">
                   </div>
                   <div class="pull-left info">
                       <p>Alexander Pierce</p>
@@ -45,23 +45,29 @@
                       </a>
                   </li>
                   <li>
-                    <a href="{{ route('product.index') }}">
-                        <i class="fa fa-th"></i> <span>Products</span> <small
-                            class="label pull-right bg-green">new</small>
-                    </a>
-                </li>
+                      <a href="{{ route('product.index') }}">
+                          <i class="fa fa-th"></i> <span>Products</span> <small
+                              class="label pull-right bg-green">new</small>
+                      </a>
+                  </li>
                   <li>
-                    <a href="{{ route('product-list') }}">
-                        <i class="fa fa-th"></i> <span>Products Purchase Section</span> <small
-                            class="label pull-right bg-green">new</small>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{ url('chat') }}">
-                        <i class="fa fa-th"></i> <span>Chat</span> <small
-                            class="label pull-right bg-green">new</small>
-                    </a>
-                </li>
+                      <a href="{{ route('product-list') }}">
+                          <i class="fa fa-th"></i> <span>Products Purchase Section</span> <small
+                              class="label pull-right bg-green">new</small>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="{{ route('chat-first-example.public') }}">
+                          <i class="fa fa-th"></i> <span>Chat</span> <small
+                              class="label pull-right bg-green">new</small>
+                      </a>
+                  </li>
+                  <li>
+                      <a href="{{ route('chat-second-example.home') }}">
+                          <i class="fa fa-th"></i> <span>Chat Second</span> <small
+                              class="label pull-right bg-green">new</small>
+                      </a>
+                  </li>
 
                   <li class="treeview">
                       <a href="#">

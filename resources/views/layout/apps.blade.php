@@ -162,8 +162,11 @@
         input[type=text]:focus {
             border: 1px solid #aaaaaa;
         }
-
     </style>
+        @stack('style')
+
+    @stack('styles')
+
 </head>
 
 <body>
@@ -173,8 +176,8 @@
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                    aria-controls="navbarSupportedContent" aria-expanded="false"
+                <button class="navbar-toggler" type="button" data-toggle="collapse"
+                    data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                     aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
@@ -205,7 +208,8 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('logout.store') }}" onclick="event.preventDefault();
+                                    <a class="dropdown-item" href="{{ route('logout.store') }}"
+                                        onclick="event.preventDefault();
                                                          document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
@@ -250,7 +254,7 @@
             });
 
             var channel = pusher.subscribe('my-channel');
-            channel.bind('my-event', function (data) {
+            channel.bind('my-event', function(data) {
                 // alert(JSON.stringify(data));
                 if (my_id == data.from) {
                     // alert('sender');
@@ -333,6 +337,9 @@
             }, 50);
         }
     </script>
+    @stack('script')
+    @stack('scripts')
+    
 </body>
 
 </html>

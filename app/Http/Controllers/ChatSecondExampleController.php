@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
-class ChatsHomeController extends Controller
+class ChatSecondExampleController extends Controller
 {
     /**
      * Create a new controller instance.
@@ -38,7 +38,7 @@ class ChatsHomeController extends Controller
         group by users.id, users.name, users.avatar, users.email");
 
         // $users = Message::where()
-        return view('chat.home', ['users' => $users]);
+        return view('chat-second-example.home', ['users' => $users]);
     }
 
     public function getMessage($user_id)
@@ -64,7 +64,7 @@ class ChatsHomeController extends Controller
         })->get();
 
         // dd($messages);  
-        return view('chat.messages.index', [
+        return view('chat-second-example.messages.index', [
             'messages' => $messages,
             'user' => $user,
         ]);

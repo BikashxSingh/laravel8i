@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Resources\UserListResource;
 use App\Http\Resources\MessageListResource;
 
-class ChatsController extends Controller
+class ChatFirstExampleController extends Controller
 {
     //
     public function __construct()
@@ -35,11 +35,11 @@ class ChatsController extends Controller
      */
     public function chat()
     {
-        // return view('chat.chat');
+        // return view('chat-first-example.chat');
         if (request()->is('api/*')) {
             // return redirect()->json(['.data']);
         } else {
-            return view('chat.chat');
+            return view('chat-first-example.chat');
         }
     }
 
@@ -55,24 +55,10 @@ class ChatsController extends Controller
     }
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     // public function chatPage()
     // {
     //     $users = User::take(10)->get();
-    //     return view('chat.chat', ['users' => $users]);
+    //     return view('chat-first-example.chat', ['users' => $users]);
     // }
 
     public function chatUsers()
@@ -82,7 +68,7 @@ class ChatsController extends Controller
         if (request()->is('api/*')) {
             return UserListResource::collection($users);
         } else {
-            return view('chat.chat-users', compact('users'));
+            return view('chat-first-example.chat-users', compact('users'));
         }
     }
 
@@ -104,7 +90,7 @@ class ChatsController extends Controller
         // if (request()->is('api/*')) {
         //     return new UserResource($user);
         // } else {
-        //     return view('chat.personal-chat', compact('user'));
+        //     return view('chat-first-example.personal-chat', compact('user'));
         // }
 
         // $messagesSR = Message::where(['from'=> $user_id, 'to'=> $my_id])->orWhere(function ($query) use ($user_id, $my_id) {
@@ -152,8 +138,8 @@ class ChatsController extends Controller
             // ];
             return MessageListResource::collection($messages);
         } else {
-            // return view('chat.personal-chat', compact('sentMessage', 'receivedMessages'));
-            return view('chat.personal-chat', compact('messages', 'user'));
+            // return view('chat-first-example.personal-chat', compact('sentMessage', 'receivedMessages'));
+            return view('chat-first-example.personal-chat', compact('messages', 'user'));
         }
     }
 
@@ -161,6 +147,7 @@ class ChatsController extends Controller
 
     public function sendMessage(Request $request)
     {
+        dd($request->all());
         $message = [
             "to" => $request->userid,
             "from" => Auth::user()->id,

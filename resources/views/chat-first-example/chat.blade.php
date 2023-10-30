@@ -31,9 +31,9 @@
         </header>
         @auth
             <div class="container">
-                <a href="{{ url('/chat-users') }}" class="container text text-danger" class="">
+                <a href="{{ url('chat-first-example/chat-users') }}" class="container text text-danger" class="">
                     <button class="btn btn-success">
-                        Personal Chat
+                        Chat Users
                     </button>
                 </a>
             </div>
@@ -57,7 +57,10 @@
     </div>
 @endsection
 
-@push('script')
+@push('styles')
+@endpush
+
+@push('scripts')
     <script>
         // const message_el = document.getElementById("messages");
         // const username_input = document.getElementById("username");
@@ -66,9 +69,9 @@
 
         // message_form.addEventListener('submit', function(e) {
         //     e.preventDefault();
-            
+
         //     let has_errors = false;
-            
+
         //     if (username_input.value == "") {
         //         alert('Enter a username');
         //         has_errors = true;
@@ -78,25 +81,25 @@
         //         alert('Enter a message');
         //         has_errors = true;
         //     }
-            
+
         //     if (has_errors) {
         //         return;
         //     }
-            
+
         //     const options = {
         //         method: 'post',
-        //         // url: '/chat/send-message',
-        //         url: "{{ route('chat.public.sendMessages') }}",
+        //         // url: '/chat-first-example/send-message',
+        //         url: "{{ route('chat-first-example.public.sendMessages') }}",
         //         data: {
         //             username: username_input.value,
         //             message: message_input.value
         //         }
         //     }
-            
+
         //     axios(options);
-            
+
         // });
-        
+
         // console.log('sdf');
         // console.log(Echo);
 
@@ -111,7 +114,55 @@
     </script>
 @endpush
 
-@push('styles')
-@endpush
 @push('scripts')
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+
+    <script>
+        const message_el = document.getElementById("messages");
+        const username_input = document.getElementById("username");
+        const message_input = document.getElementById("message_input");
+        const message_form = document.getElementById("message_form");
+
+        message_form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            let has_errors = false;
+
+            if (username_input.value == "") {
+                alert('Enter a username');
+                has_errors = true;
+            }
+
+            if (message_input.value == "") {
+                alert('Enter a message');
+                has_errors = true;
+            }
+
+            if (has_errors) {
+                return;
+            }
+
+            const options = {
+                method: 'post',
+                url: "{{ route('chat-first-example.sendMessages') }}",
+                data: {
+                    username: username_input.value,
+                    message: message_input.value
+                }
+            }
+
+            axios(options);
+
+        });
+
+
+        console.log(window.Echo.channel('chat'));
+        window.Echo.channel('chat')
+            .listen('.data', (e) => {
+                console.log(e);
+                message_el.innerHTML += '<div class="message"><strong>' + e.username + ':</strong>' + e.message +
+                    '</div>';
+            });
+    </script>
 @endpush
